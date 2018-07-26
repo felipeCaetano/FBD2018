@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+<html>
+  <head>
+    <title>Fábrica de Roupas| Exibir</title>
+    <link rel="stylesheet" href="{{url_for('static', filename="css/bootstrap.min.css")}}">
+  </head>
+  <body>
+    {% block content %}
+
+    <div class="jumbotron">
+      <div>
+        <h2 class="text-muted">Exibir</h2>
+      </div>
+      <img src="../static/images/logotipo.png" width="150" height="150">
+      <h1>Fabrica de Roupas</h1>
+      <p class="lead">Você bem vestido</p>
+      <img src="">
+      <p>
+        <a class="btn btn-lg btn-success" href="exibir/costureiras" role="button">Costureira</a>
+        <a class="btn btn-lg btn-success" href="exibir/supervisoras" role="button">Supervisora</a>
+        <a class="btn btn-lg btn-success" href="exibir/funcionarios" role="button">Funcionario</a>
+        <a class="btn btn-lg btn-success" href="exibir/pecas" role="button">Peças</a>
+      <a class="btn btn-lg btn-success" href="exibir/producao" role="button">Produção</a>
+      <a class="btn btn-lg btn-success" href="exibir/maquinas" role="button">Máquinas</a>
+      <a class="btn btn-lg btn-success" href="exibir/habilitacao" role="button">Habilitação</a>
+      <a class="btn btn-lg btn-success" href="exibir/manutencao" role="button">Manutenção</a>
+    </p>
+    </div>
+{% endblock %}

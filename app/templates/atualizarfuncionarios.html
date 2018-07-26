@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+<html>
+  <head>
+    <title>Fábrica de Roupas| Atualizar Funcionarios</title>
+    <link rel="stylesheet" href="{{url_for('static', filename="css/bootstrap.min.css")}}">
+  </head>
+  <body>
+    {% block content %}
+
+    <div class="jumbotron">
+      <div>
+        <h2 class="text-muted">Atualizar</h2>
+      </div>
+      <img src="../static/images/logotipo.png" width="150" height="150">
+      <h1>Fabrica de Roupas</h1>
+      <p class="lead">Você bem vestido</p>
+           
+  
+      <p>
+        <div class="btn-group">
+          <button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton1"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Costureira</button>
+          <div class="dropdown-menu active" aria-labelledby="dropdownMenuButton">
+            <form class="px-4 py-3" action="/atualizar/costureiras" method="POST">
+              <div class="form-group">
+                <label for="matricula">Informe a Matrícula:</lable>
+                <input type="number" name="matricula" id="matricula" placeholder="Matricula" min="1"/>
+              </div>
+              <div class="form-group">
+                <label for="nome">Nome</lable>
+                <input type="text" name="nome" id="nome" placeholder="Nome"/>
+              </div>
+              <div class="form-group">
+                <label for="Valor Minimo">Valor Mínimo</lable>
+                <input type="number" name="valor" placeholder="Valor Mínimo" min="1"/>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="issupervisora" id="issupervisora" value="on">
+                <label class="form-check-label" for="issupervisora">Nova Supervisora</label>
+              </div>
+              <div class="dropdown-divider"></div>
+              <button type="submit"  class="btn btn-lg btn-success">Cadastrar</button>
+              <button type="reset"  class="btn btn-lg btn-secondary">Limpar</button>
+            </form>
+          </div>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton1"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Supervisora</button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <form class="px-4 py-3">
+              <div class="form-group">
+                <label for="matricula">Informe a Matrícula</lable>
+                <input type="number" name="matricula" id="matricula" placeholder="Matricula" min="1"/>
+              </div>
+              <div class="form-group">
+                <label for="nome">Nome</lable>
+                <input type="text" name="nome" id="nome" placeholder="Nome"/><br>
+              </div>
+              <div class="dropdown-divider"></div>
+              <button type="submit"  class="btn btn-lg btn-success">Cadastrar</button>
+              <button type="reset"  class="btn btn-lg btn-secondary">Limpar</button>
+            </form>
+          </div>
+        </div>
+    </p>
+    </div>
+{% endblock %}
