@@ -39,7 +39,7 @@
                 <label class="form-check-label" for="issupervisora">Nova Supervisora</label>
               </div>
               <div class="dropdown-divider"></div>
-              <button type="submit"  class="btn btn-lg btn-success">Cadastrar</button>
+              <button type="submit"  class="btn btn-lg btn-success">Alterar</button>
               <button type="reset"  class="btn btn-lg btn-secondary">Limpar</button>
             </form>
           </div>
@@ -48,7 +48,7 @@
           <button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton1"
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Supervisora</button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <form class="px-4 py-3">
+            <form class="px-4 py-3" action="/atualizar/supervisora" method="POST">
               <div class="form-group">
                 <label for="matricula">Informe a Matrícula</lable>
                 <input type="number" name="matricula" id="matricula" placeholder="Matricula" min="1"/>
@@ -58,7 +58,7 @@
                 <input type="text" name="nome" id="nome" placeholder="Nome"/><br>
               </div>
               <div class="dropdown-divider"></div>
-              <button type="submit"  class="btn btn-lg btn-success">Cadastrar</button>
+              <button type="submit"  class="btn btn-lg btn-success">Alterar</button>
               <button type="reset"  class="btn btn-lg btn-secondary">Limpar</button>
             </form>
           </div>

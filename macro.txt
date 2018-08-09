@@ -1,0 +1,26 @@
+requesitos:
+
+virtualenv
+
+Python3 
+setuptools
+pymysql
+
+No Linux or OS X:
+
+pip install -U pip setuptools 
+python3 pip install pymysql
+virtualenv venv
+.venv\bin\activate
+
+No Windows:
+
+python -m pip install -U pip setuptools
+
+pip install virtualenv
+virtualenv venv
+venv\Scripts\activate
+
+xamp ou workbranch :
+
+vai pasta do diretorio:

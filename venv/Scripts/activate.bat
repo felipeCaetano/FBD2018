@@ -1,5 +1,5 @@
 @echo off
-set "VIRTUAL_ENV=C:\Users\Felipe\AppData\Local\Programs\Python\Python36-32\estudos\LGBD2018\venv"
+set "VIRTUAL_ENV=C:\Users\vidal\Desktop\KuDeGalinha\LGBD2018\venv"
 
 if defined _OLD_VIRTUAL_PROMPT (
     set "PROMPT=%_OLD_VIRTUAL_PROMPT%"

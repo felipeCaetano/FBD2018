@@ -16,20 +16,21 @@
         <form action="" method="POST">
         <input type="number" name="codigo" placeholder="Código" min="1"/><br>
         <input type="text" name="local" placeholder="Localização"/><br>
-        <input type="text" name="Valor" placeholder="Fabricante" /><br>
-        <select name="cortes">
-          <option value="corte1">Corte 1</option>
-          <option value="corte2">Corte 2</option>
-          <option value="corte3">Corte 3</option>
-          <option value="corte4">Corte 4</option>
-          <option value="corte5">Corte 5</option>
-          <option value="corte6">Corte 6</option>
-          <option value="corte7">Corte 7</option>
-          <option value="corte8">Corte 8</option>
+        <input type="text" name="fabricante" placeholder="Fabricante" /><br>
+        <select name="descricao">
+          <option value="costura 1">Corte 1</option>
+          <option value="costura 2">Corte 2</option>
+          <option value="costura 3">Corte 3</option>
+          <option value="costura 4">Corte 4</option>
+          <option value="costura 5">Corte 5</option>
+          <option value="costura 6">Corte 6</option>
+          <option value="costura 7">Corte 7</option>
+          <option value="costura 8">Corte 8</option>
         </select>
         <button type="submit"  class="btn btn-lg btn-success">Cadastrar</button>
         <button type="reset"  class="btn btn-lg btn-secondary">Limpar</button>
       </form>
     </p>
+    <u><b>{{result}}<br></b>
     </div>
 {% endblock %}

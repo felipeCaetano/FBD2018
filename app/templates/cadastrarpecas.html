@@ -6,7 +6,6 @@
   </head>
   <body>
     {% block content %}
-
     <div class="jumbotron">
       <div>
         <h2 class="text-muted">Cadastrar Peças</h2>
@@ -14,13 +13,14 @@
       <div></div>
       <p>
         <form action="" method="POST">
-
-        <input type="number" name="codigo" placeholder="Código" min="1"/><br>
+        <textarea name="modelo"  maxlength="100">Descriçao do modelo</textarea><br>
         <textarea name="descricao"  maxlength="100">Descrição da Peça</textarea><br>
         <input type="number" name="mat_cost" placeholder="Matricula da costureira" min="1"/><br>
 
         <button type="submit"  class="btn btn-primary">Cadastrar</button>
       </form>
     </p>
+     {{result}}<br>
     </div>
+   
 {% endblock %}

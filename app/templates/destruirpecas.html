@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+<html>
+  <head>
+    <title>Fábrica de Roupas| Deletar Peças</title>
+    <link rel="stylesheet" href="{{url_for('static', filename="css/bootstrap.min.css")}}">
+  </head>
+  <body>
+    {% block content %}
+
+    <div class="jumbotron">
+      <div>
+        <h2 class="text-muted">Deletar Peças</h2>
+      </div>
+      <div></div>
+      <p>
+        <form action="" method="POST">
+        <textarea name="modelo"  maxlength="100">Descriçao do modelo</textarea><br>
+        <textarea name="descricao"  maxlength="100">Descrição da Peça</textarea><br>
+        <input type="number" name="mat_cost" placeholder="Matricula da costureira" min="1"/><br>
+
+        <button type="submit"  class="btn btn-primary">Excluir</button>
+      </form>
+    </p>
+    </div>
+{% endblock %}
