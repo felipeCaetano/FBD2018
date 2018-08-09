@@ -198,11 +198,97 @@ def atualizar_funcionarios():
 def atualizar_costureiras():
     
     if request.method == "POST":
-        try:
-            if request.form['issupervisora'] == "on":
-                flash("Deseja Promover para supervisora?")
-        except:
-            pass
+
+        m = request.form['matricula']
+        n = request.form['nome']
+        v =request.form['valor']
+        c =conexao.cursor()
+        
+
+
+        if m and n and not v:
+            
+            comando = '''select * from costureira where matricula_func = {} '''.format(m)
+            countrow = c.execute(comando)
+            print(countrow)
+            if countrow == 1:
+                comando = '''update funcionario  set nome = %s where matricula = {};'''.format(m)
+                c.execute(comando,n)
+                conexao.commit()
+                try:
+                    if request.form['issupervisora'] == "on":
+                        try:
+                            comando = """insert into  supervisora(matricula_func) values (%s);"""
+                           
+                            c.execute(comando,(m))
+
+                            comandodel = """ delete from costureira where matricula_func = {}""".format(m)
+                           
+                            c.execute(comandodel)
+
+                            conexao.commit()
+                            flash("Promovida com sucessor : "+n+" agora é Supervisora")
+                        except:
+                            conexao.commit()
+                            flash("Matricula representa uma Supervisora")
+                except:
+                    c.execute(comando,n)
+                    conexao.commit()
+                    print("sucesso")
+                    flash("Nome da Costureira foi Alterado com sucesso")
+            else:
+                print("Matricula não existe")
+                conexao.commit()
+                flash("Matricula não existe")
+        
+        
+        elif m and not n and  v:
+            
+            comando = '''select * from costureira where matricula_func = {} '''.format(m)
+            
+            countrow = c.execute(comando)
+            if countrow == 1:
+                
+                comando = '''update costureira  set valor_minimo = {} where matricula_func = {};'''.format(v,m)
+                c.execute(comando)
+                conexao.commit()
+                print("sucesso")
+                flash("Valor minimo foi Alterado com sucesso")
+            else:
+                print("Matricula não existe, o valor minimo não foi atualizado")
+                conexao.commit()
+                flash("Matricula não existe, o valor minimo não foi atualizado")
+        
+        elif m and n and v:
+            
+            try:
+                if request.form['issupervisora'] == "on":
+                    flash("Para promover não insira o valor minimo")
+                    return render_template('atualizarfuncionarios.html')
+            except:
+                pass
+            
+            comando = '''select * from costureira where matricula_func = {} '''.format(m)
+            countrow = c.execute(comando)
+            conexao.commit()
+            if countrow == 1:
+                comando = """update costureira  set valor_minimo = {} where matricula_func = {};""".format(v,m)
+                c.execute(comando)
+                conexao.commit()
+                comando = '''update funcionario  set nome = %s where matricula = {};'''.format(m)
+                c.execute(comando,n)
+                conexao.commit()
+                flash("Valor minimo foi Alterado com sucesso")            
+
+            else:
+                print("Matricula não existe ou não é Costureira")
+                conexao.commit()
+                flash("Matricula não existe ou não é Costureira")
+            
+        else:
+            flash("Nada Foi Enviado")
+       
+        
     else:
         pass
     return render_template('atualizarfuncionarios.html')
@@ -210,10 +296,29 @@ def atualizar_costureiras():
 @fabrica_de_roupas.route('/atualizar/supervisora', methods=["GET", "POST"])
 def atualizar_supervisora():
     
+    m = request.form['matricula']
+    n = request.form['nome']
+    c =conexao.cursor()
+
     if request.method == "POST":
-        pass
-    else:
-        pass
+
+        if m and n:
+            comando ='''select * from supervisora where matricula_func = {}'''.format(m)
+            countrow = c.execute(comando)
+            if countrow == 1:
+                comando = '''update funcionario  set nome = %s where matricula = {};'''.format(m)
+                c.execute(comando,n)
+                conexao.commit()
+                flash("Nome da Supervisora foi Alterado com sucesso")            
+
+            else:
+                print("Matricula não existe ou não é Supervisora")
+                conexao.commit()
+                flash("Matricula não existe ou não é Supervisora")
+            
+        else:
+            flash("Precisa de Matricula e Nome")
+
     return render_template('atualizarfuncionarios.html')
 
 @fabrica_de_roupas.route('/atualizar/maquinas', methods=["GET", "POST"])
@@ -239,8 +344,96 @@ def destruir():
 
 @fabrica_de_roupas.route('/destruir/funcionarios', methods=["GET", "POST"])
 def destruir_funcionarios():
+    
     if request.method == "POST":
-        pass
+        m = request.form['matricula']
+        n = request.form['nome']
+        v =request.form['valor']
+        c =conexao.cursor()
+
+        if m and n and not v:
+            
+            comando = '''select * from costureira where matricula_func = {} '''.format(m)
+            countrow = c.execute(comando)
+            print(countrow)
+            if countrow == 1:
+                comando = '''update funcionario  set nome = %s where matricula = {};'''.format(m)
+                c.execute(comando,n)
+                conexao.commit()
+                try:
+                    if request.form['issupervisora'] == "on":
+                        try:
+                            comando = """insert into  supervisora(matricula_func) values (%s);"""
+                           
+                            c.execute(comando,(m))
+
+                            comandodel = """ delete from costureira where matricula_func = {}""".format(m)
+                           
+                            c.execute(comandodel)
+
+                            conexao.commit()
+                            flash("Promovida com sucessor : "+n+" agora é Supervisora")
+                        except:
+                            conexao.commit()
+                            flash("Matricula representa uma Supervisora")
+                except:
+                    c.execute(comando,n)
+                    conexao.commit()
+                    print("sucesso")
+                    flash("Nome da Costureira foi Alterado com sucesso")
+            else:
+                print("Matricula não existe")
+                conexao.commit()
+                flash("Matricula não existe")
+        
+        
+        elif m and not n and  v:
+            
+            comando = '''select * from costureira where matricula_func = {} '''.format(m)
+            
+            countrow = c.execute(comando)
+            if countrow == 1:
+                
+                comando = '''update costureira  set valor_minimo = {} where matricula_func = {};'''.format(v,m)
+                c.execute(comando)
+                conexao.commit()
+                print("sucesso")
+                flash("Valor minimo foi Alterado com sucesso")
+            else:
+                print("Matricula não existe, o valor minimo não foi atualizado")
+                conexao.commit()
+                flash("Matricula não existe, o valor minimo não foi atualizado")
+        
+        elif m and n and v:
+            
+            try:
+                if request.form['issupervisora'] == "on":
+                    flash("Para promover não insira o valor minimo")
+                    return render_template('atualizarfuncionarios.html')
+            except:
+                pass
+            
+            comando = '''select * from costureira where matricula_func = {} '''.format(m)
+            countrow = c.execute(comando)
+            conexao.commit()
+            if countrow == 1:
+                comando = """update costureira  set valor_minimo = {} where matricula_func = {};""".format(v,m)
+                c.execute(comando)
+                conexao.commit()
+                comando = '''update funcionario  set nome = %s where matricula = {};'''.format(m)
+                c.execute(comando,n)
+                conexao.commit()
+                flash("Valor minimo foi Alterado com sucesso")            
+
+            else:
+                print("Matricula não existe ou não é Costureira")
+                conexao.commit()
+                flash("Matricula não existe ou não é Costureira")
+            
+        else:
+            flash("Nada Foi Enviado")
+       
+        
     else:
         pass
     return render_template('destruirfuncionarios.html')
